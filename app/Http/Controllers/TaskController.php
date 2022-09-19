@@ -16,7 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'tasks' => Task::query()->orderBy('completed')->orderBy('created_at', 'DESC')->get()
+            'tasks' => Task::query()->where('user_id', '=', Auth::id())->orderBy('completed')->orderBy('created_at', 'DESC')->get()
         ]);
     }
 

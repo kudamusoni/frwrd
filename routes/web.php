@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MotivationController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/task/{task}', [TaskController::class, 'update']);
 
     Route::delete('/task/{task}', [TaskController::class, 'destroy']);
+
+    Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
+
 });
 require __DIR__.'/auth.php';

@@ -22,7 +22,7 @@
                 <form method="POST" action="/task/{{ $task->id }}">
                     @csrf
                     @method('PATCH')
-                    <button class="{{ $completed ? 'bg-gray-400' : 'bg-blue-400' }} border text-white text-md p-2.5 shadow-sm sm:rounded-lg" {{ $completed ? 'disabled="true"' : '' }} type="submit">
+                    <button class="{{ $completed ? 'bg-gray-400' : 'bg-black' }} border text-white text-md p-2.5 shadow-sm sm:rounded-lg" {{ $completed ? 'disabled="true"' : '' }} type="submit">
                         {{ $btnText }}
                     </button>
                 </form>
