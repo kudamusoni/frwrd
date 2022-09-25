@@ -24,12 +24,6 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
 
-    Route::post('/task', [TaskController::class, 'create']);
-
-    Route::patch('/task/{task}', [TaskController::class, 'update']);
-
-    Route::delete('/task/{task}', [TaskController::class, 'destroy']);
-
     Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
 
 });

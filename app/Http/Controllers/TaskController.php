@@ -15,9 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('dashboard', [
-            'tasks' => Task::query()->where('user_id', '=', Auth::id())->orderBy('completed')->orderBy('created_at', 'DESC')->get()
-        ]);
+        return view('dashboard');
     }
 
     /**
@@ -27,15 +25,6 @@ class TaskController extends Controller
      */
     public function create()
     {
-        // dd(request()->all());
-        $attributes = request()->validate([
-            'name' => 'required|max:255',
-        ]);
-        $attributes['user_id'] = Auth::id();
-
-        Task::create($attributes);
-
-        return redirect('/dashboard');
     }
 
     /**
@@ -80,9 +69,6 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->update(['completed' => 'true']);
-
-        return redirect('/dashboard');
     }
 
     /**
@@ -93,8 +79,5 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        $task->delete();
-
-        return redirect('/dashboard');
     }
 }

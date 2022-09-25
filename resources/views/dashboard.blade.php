@@ -7,12 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-create-tasks></x-create-tasks>
-            <ul class="mt-6">
-                @foreach ($tasks as $task)
-                    <x-task :task="$task"></x-task>
-                @endforeach
-            </ul>
+            <livewire:create-task/>
+            <livewire:task-list/>
         </div>
     </div>
 </x-app-layout>
