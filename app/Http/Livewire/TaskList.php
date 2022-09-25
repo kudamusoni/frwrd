@@ -17,7 +17,8 @@ class TaskList extends Component
 
     public function getTasks()
     {
-        $this->tasks = Task::query()->where('user_id', '=', Auth::id())->orderBy('completed')->orderBy('created_at', 'DESC')->get();
+        $this->tasks = Task::query()->where('user_id', '=', Auth::id())->whereNull('deleted')->orderBy('completed')->orderBy('created_at', 'DESC')->get();
+        // dd(Task::query()->where('user_id', '=', Auth::id())->where('deleted', '!=', 'true')->orderBy('completed')->orderBy('created_at', 'DESC')->toSql());
     }
 
     public function mount()

@@ -33,7 +33,7 @@ class Task extends Component
 
     public function delete()
     {
-        $this->task->delete();
+        $this->task->update(['deleted' => 'true']);
         $this->show = false;
     }
 
