@@ -30,6 +30,8 @@ class CreateTask extends Component
 
         Task::create($validatedData);
 
+        sleep(2);
+
         $this->reset('name');
 
         $this->emit('taskUpdated');
