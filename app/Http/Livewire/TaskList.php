@@ -12,13 +12,19 @@ class TaskList extends Component
     public $tasks;
 
     protected $listeners = [
-        'taskUpdated' => 'getTasks'
+        'taskUpdated' => 'getTasks',
+        'taskListVisibility' => 'getTasks'
     ];
 
-    public function getTasks()
+    public function getTasks($showCompleted = 'true')
     {
-        $this->tasks = Task::query()->where('user_id', '=', Auth::id())->whereNull('deleted')->orderBy('completed')->orderBy('created_at', 'DESC')->get();
-        // dd(Task::query()->where('user_id', '=', Auth::id())->where('deleted', '!=', 'true')->orderBy('completed')->orderBy('created_at', 'DESC')->toSql());
+        $this->tasks = Task::query()
+            ->where('user_id', '=', Auth::id())
+            ->when($showCompleted!=='true', function($query, $showCompleted) {
+                $query->whereNull('completed');
+            })
+            ->orderBy('completed')->orderBy('created_at', 'DESC')
+            ->get();
     }
 
     public function mount()
