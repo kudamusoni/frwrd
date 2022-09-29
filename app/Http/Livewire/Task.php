@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Task extends Component
@@ -26,14 +27,14 @@ class Task extends Component
 
     public function complete()
     {
-        $this->task->update(['completed' => 'true']);
+        $this->task->update(['completed' => 'true', 'completed_at' => Carbon::now()]);
         $this->updateButton();
         $this->emit('taskUpdated');
     }
 
     public function delete()
     {
-        $this->task->update(['deleted' => 'true']);
+        $this->task->delete();
         $this->show = false;
     }
 

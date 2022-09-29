@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->text('name')->nullable();
             $table->text('completed')->nullable();
+            $table->text('deleted')->nullable();
+            $table->timestamp('completed_at')->nullable();
         });
     }
 
