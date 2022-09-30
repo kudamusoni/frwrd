@@ -3,10 +3,14 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Livewire\Component;
 
 class Task extends Component
 {
+
+    use HasFactory;
+
     public $task;
 
     public $completed;
