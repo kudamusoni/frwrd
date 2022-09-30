@@ -22,7 +22,15 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/task/{id}', function($id) {
+        return view('single-task-view', [
+            'task' => $id
+        ]);
+    })->name('view-task');
 
     // Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
 
