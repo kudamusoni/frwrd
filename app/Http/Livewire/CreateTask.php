@@ -11,8 +11,6 @@ class CreateTask extends Component
 
     public $name;
 
-    public $tasks;
-
     protected $rules = [
         'name' => 'required|max:255',
     ];

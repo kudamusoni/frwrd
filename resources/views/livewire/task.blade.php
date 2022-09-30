@@ -4,9 +4,11 @@
     <li class="list-none mt-4">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200 flex justify-between items-center {{ $task->completed === 'true' ? 'line-through' : '' }}">
-                <div class="text-xl">
-                    {{ $task['name'] }}
-                </div>
+                <a href="{{ route('view-task', ['id' => $task->id]) }}">
+                    <div class="text-xl">
+                        {{ $task->name }}
+                    </div>
+                </a>
                 <div class="flex">
                     <form wire:submit.prevent="delete" method="POST">
                         <button class="bg-red-500 border text-white text-md p-2.5 shadow-sm sm:rounded-lg">
