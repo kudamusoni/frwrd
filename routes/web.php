@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
 
-    Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
+    // Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
 
 });
 require __DIR__.'/auth.php';
