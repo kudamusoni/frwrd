@@ -1,5 +1,7 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
+    <livewire:back-button href='dashboard' title='Back to task'>
+
     <form wire:submit.prevent="save" method="POST">
         <input type="text"  wire:model="name" class="my-4 sm:rounded-lg bg-gray-50 border border-gray-300 text-gray-800 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500" maxlength="255">
         <textarea wire:model="extra_details" id="" cols="30" rows="10" class="my-4 sm:rounded-lg bg-gray-50 border border-gray-300 text-gray-800 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500" maxlength="2055"></textarea>
