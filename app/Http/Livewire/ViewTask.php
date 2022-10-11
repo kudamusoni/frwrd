@@ -13,18 +13,22 @@ class ViewTask extends Component
 
     public $name;
 
-    public $extra_details;
+    public $description;
+
+    public $priority;
 
     protected $rules = [
         'name' => 'required|max:255',
-        'extra_details' => 'max:2055',
+        'description' => 'max:2055',
+        'priority' => 'nullable',
     ];
 
     public function mount($id)
     {
         $this->task = Task::findOrFail($id);
         $this->name = $this->task->name;
-        $this->extra_details = $this->task->extra_details;
+        $this->description = $this->task->description;
+        $this->priority = $this->task->priority;
     }
 
     public function updated($propertyName) {
@@ -37,10 +41,11 @@ class ViewTask extends Component
         $validatedData = $this->validate();
 
         $this->task->name = $validatedData['name'];
-        $this->task->extra_details = $validatedData['extra_details'];
+        $this->task->description = $validatedData['description'];
+        $this->task->priority = $validatedData['priority'];
         $this->task->save();
 
-        sleep(2);
+        sleep(1);
 
         return back();
 

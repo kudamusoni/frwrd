@@ -22,7 +22,8 @@ return new class extends Migration
             $table->text('completed')->nullable();
             $table->text('deleted')->nullable();
             $table->timestamp('completed_at')->nullable();
-            $table->text('extra_details')->nullable();
+            $table->text('description')->nullable();
+            $table->text('priority')->nullable();
         });
     }
 
