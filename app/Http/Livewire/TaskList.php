@@ -13,18 +13,33 @@ class TaskList extends Component
 
     protected $listeners = [
         'taskUpdated' => 'getTasks',
-        'taskListVisibility' => 'getTasks'
+        'taskListVisibility' => 'getTasks',
+        'orderByChange' => 'getTasks'
     ];
 
-    public function getTasks($showCompleted = 'true')
+    public function getTasks($filters=array('orderBy'=>'priority-desc','completed'=>'true'))
     {
+        $orderByVal = $this->getOrderBy($filters['orderBy']);
+
+        $showCompleted = $filters['completed'];
         $this->tasks = Task::query()
             ->where('user_id', '=', Auth::id())
             ->when($showCompleted!=='true', function($query, $showCompleted) {
                 $query->whereNull('completed');
             })
-            ->orderBy('completed')->orderBy('created_at', 'DESC')
+            ->orderBy('completed')->orderBy($orderByVal[0], $orderByVal[1])
             ->get();
+    }
+
+    public function getOrderBy($orderBy)
+    {
+        if ($orderBy === 'priority-asc') {
+            return ['priority', 'ASC'];
+        }
+        if ($orderBy === 'priority-desc') {
+            return ['priority', 'DESC'];
+        }
+        return ['completed', 'ASC'];
     }
 
     public function mount()

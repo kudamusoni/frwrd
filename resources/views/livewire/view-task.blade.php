@@ -12,10 +12,10 @@
         <div class="mb-4">
             <label for="task" class="col-sm-3 control-label underline font-bold">Priority</label>
             <select wire:model="priority" class="mb-2 mt-1 sm:rounded-lg bg-gray-50 border border-gray-300 text-gray-800 text-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="null" disabled>{{ __('Please select') }}</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
+                <option value="">{{ __('Please select') }}</option>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
             </select>
         </div>
 
