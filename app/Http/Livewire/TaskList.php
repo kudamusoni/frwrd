@@ -3,11 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Task;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class TaskList extends Component
 {
+    public $project;
 
     public $tasks;
 
@@ -24,6 +26,7 @@ class TaskList extends Component
         $showCompleted = $filters['completed'];
         $this->tasks = Task::query()
             ->where('user_id', '=', Auth::id())
+            ->where('project_id', '=', $this->project)
             ->when($showCompleted!=='true', function($query, $showCompleted) {
                 $query->whereNull('completed');
             })

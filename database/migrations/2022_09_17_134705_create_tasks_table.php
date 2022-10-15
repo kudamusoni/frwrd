@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete();
             $table->text('name')->nullable();
             $table->text('completed')->nullable();
             $table->text('deleted')->nullable();
@@ -34,6 +36,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropForeign(['project_id']);
+        });
         Schema::dropIfExists('tasks');
     }
 };

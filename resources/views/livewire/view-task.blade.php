@@ -1,6 +1,6 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <livewire:back-button href='dashboard' title='Back to task'>
+    <livewire:back-button href='/projects' title='Back to task'>
 
     <form wire:submit.prevent="save" method="POST">
         <label for="task" class="col-sm-3 control-label underline font-bold">Task name</label>

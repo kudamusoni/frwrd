@@ -17,20 +17,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return redirect('/dashboard');
+    return redirect('/projects');
 });
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function() {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/projects', function() {
+        return view('projects');
+    })->name('projects');
 
     Route::get('/task/{id}', function($id) {
         return view('single-task-view', [
             'task' => $id
         ]);
     })->name('view-task');
+
+    Route::get('/project/{project}', function($project) {
+        return view('tasks', [
+            'project' => $project
+        ]);
+    })->name('project-tasks');
+
+    Route::get('/project/{project}/task/{task}', function($project, $task) {
+
+    });
 
     // Route::get('/motivation', [MotivationController::class, 'index'])->name('motivation');
 
